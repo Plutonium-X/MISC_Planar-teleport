@@ -1,0 +1,14 @@
+@9001 = ~[Oo]nly[ %tab%]+[Uu]sable[ %tab%]+[Bb]y[ %tab%]*:~
+@9002 = ~\(Not[ %tab%]+\|Un\)[Uu]sable[ %tab%]+[Bb]y[ %tab%]*:~
+
+@100 = ~Planar Sphere Teleporter~
+@101 = ~Lavok gave you this this device along with the planar sphere. It has the ability to teleport you and your party in and out of the planar sphere from wherever you are.
+
+Whenever you use this device to enter the sphere, the exit door closes, however; it seems only Lavok knew how to reopen it.
+
+STATISTICS:
+
+May be used to enter and leave the planar sphere.
+
+Only Usable By:
+ Mage~

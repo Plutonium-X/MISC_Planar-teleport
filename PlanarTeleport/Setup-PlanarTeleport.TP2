@@ -1,0 +1,48 @@
+BACKUP ~PlanarTeleport/backup~
+AUTHOR ~jo.ge@gmx.net~
+
+ALWAYS
+	ACTION_DEFINE_ARRAY sph_reload BEGIN
+	~text.tra~
+	END
+	ACTION_DEFINE_ARRAY sph_noconvert BEGIN END
+	LAF HANDLE_CHARSETS
+		INT_VAR
+		infer_charset = 1
+		STR_VAR
+		tra_path = EVAL ~%MOD_FOLDER%/translations~
+		noconvert_array = sph_noconvert
+		reload_array = sph_reload
+	END
+END
+
+LANGUAGE ~English~
+         ~english~
+         ~PlanarTeleport/translations/english/text.tra~
+
+LANGUAGE ~Francais (d'Oghmatiques)~
+         ~french~
+         ~PlanarTeleport/translations/french/text.tra~
+
+BEGIN @100
+
+//------------------------------------------------------
+//		Modify Scripts
+//------------------------------------------------------
+EXTEND_BOTTOM ~AR0411.bcs~	~PlanarTeleport/baf/AR0411_ADD.BAF~
+EXTEND_BOTTOM ~baldur.bcs~	~PlanarTeleport/baf/BALDUR_ADD.BAF~
+
+ACTION_IF FILE_EXISTS ~Data/25Dialog.bif~ 
+THEN BEGIN
+  EXTEND_BOTTOM ~baldur25.bcs~	~PlanarTeleport/baf/BALDUR_ADD.BAF~
+END
+
+//------------------------------------------------------
+//		Create item
+//------------------------------------------------------
+INCLUDE ~PlanarTeleport/GW_BGEE.tpa~
+
+COPY ~PlanarTeleport/itm/sphtele.itm~	~override/sphtele.itm~
+SAY NAME2 @100
+LPF ~GW_EE~ STR_VAR GW_desc_to_update = "@101" END
+

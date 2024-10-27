@@ -1,0 +1,44 @@
+IF
+  Global("SpTele","GLOBAL",1)
+  !Global("TeleportedInSphere","GLOBAL",1)
+THEN
+  RESPONSE #100
+    ClearAllActions()
+    StorePartyLocations()
+    FadeToColor([30.0],0)
+    Wait(2)
+    ActionOverride(Player1,LeaveAreaLUA("AR0411","",[2954.2606],14))
+    ActionOverride(Player2,LeaveAreaLUA("AR0411","",[2904.2634],11))
+    ActionOverride(Player3,LeaveAreaLUA("AR0411","",[2985.2658],4))
+    ActionOverride(Player4,LeaveAreaLUA("AR0411","",[2922.2692],8))
+    ActionOverride(Player5,LeaveAreaLUA("AR0411","",[3012.2697],8))
+    ActionOverride(Player6,LeaveAreaLUA("AR0411","",[2956.2724],8))
+    FadeFromColor([30.0],0)
+    SetGlobal("TeleportedInSphere","GLOBAL",1)
+    SetGlobal("SpTele","GLOBAL",0)
+END
+
+IF
+  Global("SpTele","GLOBAL",1)
+  Global("TeleportedInSphere","GLOBAL",1)
+THEN
+  RESPONSE #100
+    ClearAllActions()
+    FadeToColor([30.0],0)
+    Wait(2)
+    RestorePartyLocations()
+    FadeFromColor([30.0],0)
+    SetGlobal("TeleportedInSphere","GLOBAL",0)
+    SetGlobal("SpTele","GLOBAL",0)
+END
+
+IF
+  Global("GotTeleporter","GLOBAL",0)
+  Global("PCSphere","GLOBAL",1)
+THEN
+  RESPONSE #100
+    ActionOverride(Player1,CreateItem("sphtele",1,0,0))  // ~Planar Sphere Teleporter~
+    SetGlobal("GotTeleporter","GLOBAL",1)
+END
+
+

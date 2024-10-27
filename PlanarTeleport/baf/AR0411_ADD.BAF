@@ -1,0 +1,19 @@
+IF
+  Global("PCSphere","GLOBAL",1)
+  Global("TeleportedInSphere","GLOBAL",1)
+  Global("Locked","AR0411",0)
+THEN
+  RESPONSE #100
+    SetGlobal("Locked","AR0411",1)
+    TriggerActivation("Tran0400",FALSE)
+END
+
+IF
+  Global("PCSphere","GLOBAL",1)
+  Global("TeleportedInSphere","GLOBAL",0)
+  Global("Locked","AR0411",1)
+THEN
+  RESPONSE #100
+    SetGlobal("Locked","AR0411",0)
+    TriggerActivation("Tran0400",TRUE)
+END
